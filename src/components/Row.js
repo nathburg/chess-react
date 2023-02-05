@@ -9,7 +9,7 @@ export default function Row({ rank, isFirstSquareWhite }) {
 	};
 	const colorToggler = firstColorCurried(isFirstSquareWhite);
 	return (
-		<div>
+		<div data-testid={`row-${rank}`}>
 			{fileArr.map((file) => (
 				<Square
 					key={file + rank}
