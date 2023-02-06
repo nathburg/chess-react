@@ -7,14 +7,28 @@ export const initialState = () => {
 	};
 };
 
+const emptySquare = { color: '', piece: '', image: '' };
+
 export const reducer = (state, action) => {
 	switch (action.type) {
 		case 'set-active-piece':
-			console.log('clicked');
 			return {
 				...state,
 				activePiece: action.activePiece,
 			};
+		case 'make-move': {
+			const targetSquare = action.targetSquare;
+			const piece = state.board[state.activePiece];
+			return {
+				...state,
+				board: {
+					...state.board,
+					[targetSquare]: piece,
+					[state.activePiece]: emptySquare,
+				},
+				activePiece: '',
+			};
+		}
 		default:
 			console.error(`Action type not supported ${action.type}`, action);
 			return state;

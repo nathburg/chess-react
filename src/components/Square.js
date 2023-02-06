@@ -1,18 +1,19 @@
-import { useContext } from 'react';
-import { setActivePieceHandler } from '../dispatchers/square';
-import { GameContext } from '../game-provider';
+import { makeMoveHandler, setActivePieceHandler } from '../dispatchers/square';
 import './Square.css';
 
-export default function Square({ coord, color }) {
-	const { state, dispatch } = useContext(GameContext);
+export default function Square({ coord, color, board, dispatch, activePiece }) {
 	return (
 		<button
 			className={`square ${color}`}
 			data-testid={`square-${coord}`}
 			id={`${coord}`}
-			onClick={() => setActivePieceHandler(dispatch, coord)}
+			onClick={
+				activePiece
+					? () => makeMoveHandler(dispatch, coord)
+					: () => setActivePieceHandler(dispatch, coord)
+			}
 		>
-			{state.board[coord].image}
+			{board[coord].image}
 		</button>
 	);
 }

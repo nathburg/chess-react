@@ -4,3 +4,10 @@ export const setActivePieceAction = (body) => {
 		activePiece: body,
 	};
 };
+
+export const makeMoveAction = (body) => {
+	return {
+		type: 'make-move',
+		targetSquare: body,
+	};
+};
