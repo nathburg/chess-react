@@ -1,0 +1,12 @@
+.square {
+	width: 30px;
+	height: 30px;
+}
+
+.black {
+	background-color: rgb(190, 186, 186);
+}
+
+.white {
+	background-color: white;
+}
